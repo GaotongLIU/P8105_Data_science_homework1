@@ -5,6 +5,8 @@ Gaotong LIU (gl2677)
 
 # Problem 1
 
+## Section 1
+
 Here is a **code chunk** that creates the data frame comprised of:
 
   - A random sample of size 8 from a standard Normal distribution
@@ -40,3 +42,16 @@ df = tibble(
   vec_factor = factor(c("High","Low","Medium","High","High","Low","Medium","Low"))
   )
 ```
+
+I try to take the mean of the variables:
+
+The mean of `vec_numeric` is -0.1740351.
+
+The mean of `vec_logical` is 0.5.
+
+The mean of `vec_char` is NA.
+
+The mean of `vec_factor` is NA.
+
+Therefore, only numeric and logical variables work for `mean()` \#\#
+Section 2

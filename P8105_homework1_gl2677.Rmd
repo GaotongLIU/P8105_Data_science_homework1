@@ -3,9 +3,11 @@ title: "P8105_homework1_gl2677"
 author: Gaotong LIU (gl2677)
 date: 2019-09-20
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 # Problem 1
-
+## Section 1
 Here is a **code chunk** that creates the data frame comprised of:
 
 *   A random sample of size 8 from a standard Normal distribution
@@ -23,5 +25,19 @@ df = tibble(
   vec_factor = factor(c("High","Low","Medium","High","High","Low","Medium","Low"))
   )
 ```
+
+I try to take the mean of the variables:
+
+The mean of `vec_numeric` is `r mean (pull(df, vec_numeric))`.
+
+The mean of `vec_logical` is `r mean (pull(df, vec_logical))`.
+
+The mean of `vec_char` is `r mean (pull(df, vec_char))`.
+
+The mean of `vec_factor` is `r mean (pull(df, vec_factor))`.
+
+Therefore, only numeric and logical variables work for `mean()`
+## Section 2
+
 
 
