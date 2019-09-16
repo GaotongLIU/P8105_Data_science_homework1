@@ -34,7 +34,7 @@ The mean of `vec_logical` is `r mean (vec_logical)`.
 The mean of `vec_char` is `r mean (vec_char)`.
 The mean of `vec_factor` is `r mean (vec_factor)`.
 
-Therefore, only numeric and logical variables work for `mean()`
+Therefore, only numeric and logical variables work for `mean()`.
 
 ## Section 2
 
@@ -50,7 +50,7 @@ as.numeric(as.factor(vec_logical)) * sample
 
 `vec_logical` logical variables can be converted to numeric values, T = 1, F = 0.
 `vec_char` charcter variables can **not** be converted to numberic variables, so there is no way to take the mean of character variables.
-`vec_factor` factor variables can be converted to numeric variables corresponding to levels, but these numeric variables can **not** do basic computations.Therefore, factor variables do not work for `mean()`
+`vec_factor` factor variables can be converted to numeric variables corresponding to levels, but these numeric variables can **not** do basic computations.Therefore, factor variables do not work for `mean()`.
 
 # Problem 2
 ## Section 1
@@ -73,4 +73,33 @@ df_2 = tibble(x, y, vec_logical_2, vec_numeric_2, vec_factor_2)
 ```
 
 The data frame has `r nrow(df_2)` rows and `r ncol(df_2)` columns. The mean of `x` is `r mean(x)`, and the median of `x` is `r median(x)`, and the stardar deviation of `x` is `r sd(x)`. The proportion of cases for which ` x + y > 1 ` is `r sum(vec_logical_2)/length(vec_logical_2)`.
+
+```{r}
+df_2 %>% ggplot(aes(x = x, y = y, color = vec_logical_2)) +
+  geom_point()
+ggsave("scatterplot_logical.pdf")
+
+df_2 %>% ggplot(aes(x = x, y = y, color = vec_numeric_2)) +
+  geom_point()
+df_2 %>% ggplot(aes(x = x, y = y, color = vec_factor_2)) +
+  geom_point()
+```
+
+The color scales of logical variables and factor variables are the same, which contain only two categories. The color scale of numeric variables is color plaette.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

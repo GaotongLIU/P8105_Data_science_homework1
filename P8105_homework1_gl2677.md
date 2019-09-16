@@ -31,10 +31,10 @@ df_1 = tibble(vec_numeric ,vec_logical ,vec_char ,vec_factor)
 
 I try to take the mean of the variables:
 
-The mean of `vec_numeric` is -0.0220478. The mean of `vec_logical` is
-0.5. The mean of `vec_char` is NA. The mean of `vec_factor` is NA.
+The mean of `vec_numeric` is -0.1637513. The mean of `vec_logical` is
+0.375. The mean of `vec_char` is NA. The mean of `vec_factor` is NA.
 
-Therefore, only numeric and logical variables work for `mean()`
+Therefore, only numeric and logical variables work for `mean()`.
 
 ## Section 2
 
@@ -54,7 +54,7 @@ numberic variables, so there is no way to take the mean of character
 variables. `vec_factor` factor variables can be converted to numeric
 variables corresponding to levels, but these numeric variables can
 **not** do basic computations.Therefore, factor variables do not work
-for `mean()`
+for `mean()`.
 
 # Problem 2
 
@@ -79,6 +79,37 @@ vec_factor_2 = as.factor(vec_logical_2)
 df_2 = tibble(x, y, vec_logical_2, vec_numeric_2, vec_factor_2)
 ```
 
-The data frame has 500 rows and 5 columns. The mean of `x` is 0.0073387,
-and the median of `x` is -0.046093, and the stardar deviation of `x` is
-0.9910393. The proportion of cases for which `x + y > 1` is 0.214.
+The data frame has 500 rows and 5 columns. The mean of `x` is 0.0314294,
+and the median of `x` is 0.0130747, and the stardar deviation of `x` is
+1.0062027. The proportion of cases for which `x + y > 1` is 0.254.
+
+``` r
+df_2 %>% ggplot(aes(x = x, y = y, color = vec_logical_2)) +
+  geom_point()
+```
+
+![](P8105_homework1_gl2677_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+
+``` r
+ggsave("scatterplot_logical.pdf")
+```
+
+    ## Saving 7 x 5 in image
+
+``` r
+df_2 %>% ggplot(aes(x = x, y = y, color = vec_numeric_2)) +
+  geom_point()
+```
+
+![](P8105_homework1_gl2677_files/figure-gfm/unnamed-chunk-1-2.png)<!-- -->
+
+``` r
+df_2 %>% ggplot(aes(x = x, y = y, color = vec_factor_2)) +
+  geom_point()
+```
+
+![](P8105_homework1_gl2677_files/figure-gfm/unnamed-chunk-1-3.png)<!-- -->
+
+The color scales of logical variables and factor variables are the same,
+which contain only two categories. The color scale of numeric variables
+is color plaette.
