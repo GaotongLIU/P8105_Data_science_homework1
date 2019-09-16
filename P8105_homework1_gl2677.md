@@ -26,12 +26,12 @@ vec_logical = sample > 0
 vec_char = c("My","name","is","Gaotong","LIU","MS","Biostatistic","T & M")
 vec_factor = factor(c("High","Low","Medium","High","High","Low","Medium","Low"))
                     
-df = tibble(vec_numeric ,vec_logical ,vec_char ,vec_factor)
+df_1 = tibble(vec_numeric ,vec_logical ,vec_char ,vec_factor)
 ```
 
 I try to take the mean of the variables:
 
-The mean of `vec_numeric` is -0.0109822. The mean of `vec_logical` is
+The mean of `vec_numeric` is -0.0220478. The mean of `vec_logical` is
 0.5. The mean of `vec_char` is NA. The mean of `vec_factor` is NA.
 
 Therefore, only numeric and logical variables work for `mean()`
@@ -55,3 +55,30 @@ variables. `vec_factor` factor variables can be converted to numeric
 variables corresponding to levels, but these numeric variables can
 **not** do basic computations.Therefore, factor variables do not work
 for `mean()`
+
+# Problem 2
+
+## Section 1
+
+Here is a **code chunk** that creates the data frame comprised of:
+
+  - x: a random sample of size 500 from a standard Normal distribution
+  - y: a random sample of size 500 from a standard Normal distribution
+  - A logical vector indicating whether x + y \> 1
+  - A numeric vector created by coercing the above logical vector
+  - A factor vector created by coercing the above logical vector
+
+<!-- end list -->
+
+``` r
+x = rnorm(500)
+y = rnorm(500)
+vec_logical_2 = x + y > 1
+vec_numeric_2 = as.numeric(vec_logical_2)
+vec_factor_2 = as.factor(vec_logical_2)
+df_2 = tibble(x, y, vec_logical_2, vec_numeric_2, vec_factor_2)
+```
+
+The data frame has 500 rows and 5 columns. The mean of `x` is 0.0073387,
+and the median of `x` is -0.046093, and the stardar deviation of `x` is
+0.9910393. The proportion of cases for which `x + y > 1` is 0.214.
