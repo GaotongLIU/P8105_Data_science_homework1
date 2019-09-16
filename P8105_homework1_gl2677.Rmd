@@ -4,4 +4,24 @@ author: Gaotong LIU (gl2677)
 date: 2019-09-20
 output: github_document
 ---
+# Problem 1
+
+Here is a **code chunk** that creates the data frame comprised of:
+
+*   A random sample of size 8 from a standard Normal distribution
+*   A logical vector indicating whether elements of the sample are greater than 0
+*   A character vector of length 8
+*   A factor vector of length 8, with 3 different factor “levels”
+
+```{r data_frame, echo=TRUE}
+library(tidyverse)
+sample = rnorm(8)
+df = tibble(
+  vec_numeric = sample,
+  vec_logical = sample > 0,
+  vec_char = c("My","name","is","Gaotong","LIU","MS","Biostatistic","T & M"),
+  vec_factor = factor(c("High","Low","Medium","High","High","Low","Medium","Low"))
+  )
+```
+
 
