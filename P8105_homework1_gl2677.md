@@ -13,45 +13,45 @@ Here is a **code chunk** that creates the data frame comprised of:
   - A logical vector indicating whether elements of the sample are
     greater than 0
   - A character vector of length 8
-  - A factor vector of length 8, with 3 different factor
-    “levels”
+  - A factor vector of length 8, with 3 different factor “levels”
 
 <!-- end list -->
 
 ``` r
 library(tidyverse)
-```
 
-    ## ── Attaching packages ─────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
-
-    ## ✔ ggplot2 3.2.1     ✔ purrr   0.3.2
-    ## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
-    ## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
-    ## ✔ readr   1.3.1     ✔ forcats 0.4.0
-
-    ## ── Conflicts ────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::filter() masks stats::filter()
-    ## ✖ dplyr::lag()    masks stats::lag()
-
-``` r
 sample = rnorm(8)
-df = tibble(
-  vec_numeric = sample,
-  vec_logical = sample > 0,
-  vec_char = c("My","name","is","Gaotong","LIU","MS","Biostatistic","T & M"),
-  vec_factor = factor(c("High","Low","Medium","High","High","Low","Medium","Low"))
-  )
+vec_numeric = sample
+vec_logical = sample > 0
+vec_char = c("My","name","is","Gaotong","LIU","MS","Biostatistic","T & M")
+vec_factor = factor(c("High","Low","Medium","High","High","Low","Medium","Low"))
+                    
+df = tibble(vec_numeric ,vec_logical ,vec_char ,vec_factor)
 ```
 
 I try to take the mean of the variables:
 
-The mean of `vec_numeric` is -0.1740351.
+The mean of `vec_numeric` is -0.0109822. The mean of `vec_logical` is
+0.5. The mean of `vec_char` is NA. The mean of `vec_factor` is NA.
 
-The mean of `vec_logical` is 0.5.
+Therefore, only numeric and logical variables work for `mean()`
 
-The mean of `vec_char` is NA.
+## Section 2
 
-The mean of `vec_factor` is NA.
+``` r
+as.numeric(vec_logical)
+as.numeric(vec_char)
+as.numeric(vec_factor)
 
-Therefore, only numeric and logical variables work for `mean()` \#\#
-Section 2
+as.numeric(vec_logical) * sample
+as.factor(vec_logical) * sample
+as.numeric(as.factor(vec_logical)) * sample
+```
+
+`vec_logical` logical variables can be converted to numeric values, T =
+1, F = 0. `vec_char` charcter variables can **not** be converted to
+numberic variables, so there is no way to take the mean of character
+variables. `vec_factor` factor variables can be converted to numeric
+variables corresponding to levels, but these numeric variables can
+**not** do basic computations.Therefore, factor variables do not work
+for `mean()`

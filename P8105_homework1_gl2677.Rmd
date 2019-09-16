@@ -15,29 +15,59 @@ Here is a **code chunk** that creates the data frame comprised of:
 *   A character vector of length 8
 *   A factor vector of length 8, with 3 different factor “levels”
 
-```{r data_frame, echo=TRUE}
+```{r data_frame, message=FALSE}
 library(tidyverse)
+
 sample = rnorm(8)
-df = tibble(
-  vec_numeric = sample,
-  vec_logical = sample > 0,
-  vec_char = c("My","name","is","Gaotong","LIU","MS","Biostatistic","T & M"),
-  vec_factor = factor(c("High","Low","Medium","High","High","Low","Medium","Low"))
-  )
+vec_numeric = sample
+vec_logical = sample > 0
+vec_char = c("My","name","is","Gaotong","LIU","MS","Biostatistic","T & M")
+vec_factor = factor(c("High","Low","Medium","High","High","Low","Medium","Low"))
+                    
+df = tibble(vec_numeric ,vec_logical ,vec_char ,vec_factor)
 ```
 
 I try to take the mean of the variables:
 
-The mean of `vec_numeric` is `r mean (pull(df, vec_numeric))`.
-
-The mean of `vec_logical` is `r mean (pull(df, vec_logical))`.
-
-The mean of `vec_char` is `r mean (pull(df, vec_char))`.
-
-The mean of `vec_factor` is `r mean (pull(df, vec_factor))`.
+The mean of `vec_numeric` is `r mean (vec_numeric)`.
+The mean of `vec_logical` is `r mean (vec_logical)`.
+The mean of `vec_char` is `r mean (vec_char)`.
+The mean of `vec_factor` is `r mean (vec_factor)`.
 
 Therefore, only numeric and logical variables work for `mean()`
+
 ## Section 2
+
+```{r convert_variable, eval=FALSE}
+as.numeric(vec_logical)
+as.numeric(vec_char)
+as.numeric(vec_factor)
+
+as.numeric(vec_logical) * sample
+as.factor(vec_logical) * sample
+as.numeric(as.factor(vec_logical)) * sample
+```
+
+`vec_logical` logical variables can be converted to numeric values, T = 1, F = 0.
+`vec_char` charcter variables can **not** be converted to numberic variables, so there is no way to take the mean of character variables.
+`vec_factor` factor variables can be converted to numeric variables corresponding to levels, but these numeric variables can **not** do basic computations.Therefore, factor variables do not work for `mean()`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
