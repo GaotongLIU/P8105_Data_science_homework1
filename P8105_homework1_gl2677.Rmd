@@ -7,6 +7,10 @@ editor_options:
   chunk_output_type: console
 ---
 # Problem 1
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
 ## Section 1
 Here is a **code chunk** that creates the data frame comprised of:
 
@@ -15,9 +19,7 @@ Here is a **code chunk** that creates the data frame comprised of:
 *   A character vector of length 8
 *   A factor vector of length 8, with 3 different factor “levels”
 
-```{r data_frame_1, message=FALSE}
-library(tidyverse)
-
+```{r data_frame_1}
 sample = rnorm(8)
 vec_numeric = sample
 vec_logical = sample > 0
@@ -72,9 +74,9 @@ df_2 = tibble(x, y, vec_logical_2, vec_numeric_2, vec_factor_2)
 
 ```
 
-The data frame has `r nrow(df_2)` rows and `r ncol(df_2)` columns. The mean of `x` is `r mean(x)`, and the median of `x` is `r median(x)`, and the stardar deviation of `x` is `r sd(x)`. The proportion of cases for which ` x + y > 1 ` is `r sum(vec_logical_2)/length(vec_logical_2)`.
+The data frame has `r nrow(df_2)` rows and `r ncol(df_2)` columns. The mean of `x` is `r mean(x)`, and the median of `x` is `r median(x)`, and the stardar deviation of `x` is `r sd(x)`. The proportion of cases for which `x + y > 1` is `r sum(vec_logical_2)/length(vec_logical_2)`.
 
-```{r}
+```{r scatterplot}
 df_2 %>% ggplot(aes(x = x, y = y, color = vec_logical_2)) +
   geom_point()
 ggsave("scatterplot_logical.pdf")
@@ -85,7 +87,7 @@ df_2 %>% ggplot(aes(x = x, y = y, color = vec_factor_2)) +
   geom_point()
 ```
 
-The color scales of logical variables and factor variables are the same, which contain only two categories. The color scale of numeric variables is color plaette.
+The color scales of logical variables and factor variables are the same, which contain only two categories. The color scale of numeric variables is color plaette. However, the numeric variables are converted from logical variables, so there are only two kinds of color in the scatterplot of numeric variables.
 
 
 
