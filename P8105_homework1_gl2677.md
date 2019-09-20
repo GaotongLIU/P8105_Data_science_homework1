@@ -29,8 +29,8 @@ df_1 = tibble(vec_numeric ,vec_logical ,vec_char ,vec_factor)
 
 I try to take the mean of the variables:
 
-The mean of `vec_numeric` is 0.0322927. The mean of `vec_logical` is
-0.5. The mean of `vec_char` is NA. The mean of `vec_factor` is NA.
+The mean of `vec_numeric` is 0.3521349. The mean of `vec_logical` is
+0.625. The mean of `vec_char` is NA. The mean of `vec_factor` is NA.
 
 Therefore, only numeric and logical variables work for `mean()`.
 
@@ -77,9 +77,9 @@ vec_factor_2 = as.factor(vec_logical_2)
 df_2 = tibble(x, y, vec_logical_2, vec_numeric_2, vec_factor_2)
 ```
 
-The data frame has 500 rows and 5 columns. The mean of `x` is 0.025471,
-and the median of `x` is 0.0355088, and the stardar deviation of `x` is
-1.0048453. The proportion of cases for which `x + y > 1` is 0.254.
+The data frame has 500 rows and 5 columns. The mean of `x` is 0.0523048,
+and the median of `x` is 0.054879, and the stardar deviation of `x` is
+1.0200987. The proportion of cases for which `x + y > 1` is 0.26.
 
 ``` r
 df_2 %>% ggplot(aes(x = x, y = y, color = vec_logical_2)) +
