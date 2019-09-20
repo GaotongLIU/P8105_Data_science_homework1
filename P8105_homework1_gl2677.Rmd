@@ -71,7 +71,6 @@ vec_logical_2 = x + y > 1
 vec_numeric_2 = as.numeric(vec_logical_2)
 vec_factor_2 = as.factor(vec_logical_2)
 df_2 = tibble(x, y, vec_logical_2, vec_numeric_2, vec_factor_2)
-
 ```
 
 The data frame has `r nrow(df_2)` rows and `r ncol(df_2)` columns. The mean of `x` is `r mean(x)`, and the median of `x` is `r median(x)`, and the stardar deviation of `x` is `r sd(x)`. The proportion of cases for which `x + y > 1` is `r sum(vec_logical_2)/length(vec_logical_2)`.
@@ -87,7 +86,7 @@ df_2 %>% ggplot(aes(x = x, y = y, color = vec_factor_2)) +
   geom_point()
 ```
 
-The color scales of logical variables and factor variables are the same, which contain only two categories. The color scale of numeric variables is color plaette. However, the numeric variables are converted from logical variables, so there are only two kinds of color in the scatterplot of numeric variables.
+The color scales of logical variables and factor variables are the same, which contain only two categories. The color scale of numeric variables is color plaette. However, the numeric variables are converted from logical variables, so there are only two kinds of color (0, 1) in the scatterplot of numeric variables.
 
 
 
